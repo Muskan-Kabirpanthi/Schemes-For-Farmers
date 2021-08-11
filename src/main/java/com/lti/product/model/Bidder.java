@@ -1,7 +1,10 @@
 package com.lti.product.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,13 +21,16 @@ public class Bidder {
 	private String pan_no;
 	private String license_no;
 	private String password;
-	private int location;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="location_id")
+	private Location location;
 	public Bidder() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Bidder(int bidder_id, String bidder_name, String email_id, String mobile_no, String account_no,
-			String ifsc_code, String aadhar_no, String pan_no, String license_no, String password, int location) {
+			String ifsc_code, String aadhar_no, String pan_no, String license_no, String password, Location location) {
 		super();
 		this.bidder_id = bidder_id;
 		this.bidder_name = bidder_name;
@@ -98,10 +104,10 @@ public class Bidder {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getLocation() {
+	public Location getLocation() {
 		return location;
 	}
-	public void setLocation(int location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 	
