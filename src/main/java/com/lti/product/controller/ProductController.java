@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.product.model.AddProduct;
+import com.lti.product.model.Bidder;
 import com.lti.product.service.ProductService;
 
 @RestController
@@ -24,7 +25,7 @@ public class ProductController
 {
 		@Autowired
 		ProductService prodService;
-	
+		
 	
 		@GetMapping("/products")
 		public List<AddProduct> getAll()
@@ -40,6 +41,16 @@ public class ProductController
 		
 		}
 		
+		@GetMapping("/bidders")
+		public List<Bidder> getBidders(){
+			return prodService.getBidders();
+		}
+		
+		@PostMapping("/bidders")
+		public boolean addingBidders(@RequestBody Bidder bidder)
+		{
+			return prodService.addingBidders(bidder);
+		}
 		
 		
 }

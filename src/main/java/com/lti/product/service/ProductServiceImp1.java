@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.lti.product.model.AddProduct;
+import com.lti.product.model.Bidder;
+import com.lti.product.repository.BidderRepository;
 import com.lti.product.repository.ProductRepository;
 
 @Service
@@ -15,6 +17,8 @@ public class ProductServiceImp1 implements ProductService {
 	
 	@Autowired
 	ProductRepository prodRepo;
+	@Autowired
+	BidderRepository bidderRepo;
 
 	@Override
 	public List<AddProduct> getProducts() {
@@ -24,6 +28,17 @@ public class ProductServiceImp1 implements ProductService {
 	@Override
 	public boolean addingProduct(AddProduct addproduct) {
 		prodRepo.save(addproduct);
+		return true;
+	}
+	
+	@Override
+	public List<Bidder> getBidders() {
+		return bidderRepo.findAll();
+		
+	}
+	@Override
+	public boolean addingBidders(Bidder bidders) {
+		bidderRepo.save(bidders);
 		return true;
 	}
 	
