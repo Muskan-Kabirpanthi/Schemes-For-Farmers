@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.product.model.AddProduct;
 import com.lti.product.model.Bidder;
-import com.lti.product.model.Location;
+
 import com.lti.product.service.ProductService;
 
 @RestController
@@ -52,15 +52,6 @@ public class ProductController
 		{
 			return prodService.addingBidders(bidder);
 		}
-		@GetMapping("/locations")
-		public List<Location> getLocations(){
-			return prodService.getLocations();
-		}
 		
-		@PostMapping("/locations")
-		public boolean addingLocation(@RequestBody Location location)
-		{
-			return prodService.addingLocation(location);
-		}
 		
 }
