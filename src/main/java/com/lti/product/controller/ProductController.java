@@ -4,6 +4,7 @@ package com.lti.product.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +42,14 @@ public class ProductController
 			return prodService.addingProduct(addproduct);
 		
 		}
+		
+		@PutMapping("/products")
+		public boolean updateEmployee(@RequestBody AddProduct product){
+			prodService.updateProduct(product);
+			return true;
+		}
+		
+		
 		
 		@GetMapping("/bidders")
 		public List<Bidder> getBidders(){

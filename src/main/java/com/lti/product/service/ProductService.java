@@ -15,6 +15,12 @@ public interface ProductService {
 	public List<Bidder> getBidders();
 	
 	public boolean addingBidders(Bidder bidders);
+
+	
+
+	public void updateProduct(AddProduct product);
+
+	
 	
 	
 }

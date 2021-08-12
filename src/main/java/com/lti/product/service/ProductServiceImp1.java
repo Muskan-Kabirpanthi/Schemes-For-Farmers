@@ -1,5 +1,6 @@
 package com.lti.product.service;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,6 @@ public class ProductServiceImp1 implements ProductService {
 	@Override
 	public List<AddProduct> getProducts() {
 		return prodRepo.findAll();
-		
 	}
 	@Override
 	public boolean addingProduct(AddProduct addproduct) {
@@ -45,6 +45,16 @@ public class ProductServiceImp1 implements ProductService {
 		bidderRepo.save(bidders);
 		return true;
 	}
+	@Override
+	public void updateProduct(AddProduct product) {
+//		AddProduct existingProduct = prodRepo.getById(product_id);
+//		existingProduct.setBidder_amount(product.getBidder_amount());
+//		existingProduct.setBidder_id(product.getBidder_id());
+		prodRepo.save(product);
+		System.out.println("Working");
+	}
+
+	
 	
 	}
 	
