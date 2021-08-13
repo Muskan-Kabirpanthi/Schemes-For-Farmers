@@ -19,8 +19,12 @@ public class FarmerServiceImp implements FarmerService {
 	@Autowired
 	FarmerRepo farmerrepo;
 	
-	@Autowired
-	LandRepo landrepo;
+//	@Autowired
+//	LandRepo landrepo;
+//	@Override
+//	public List<Land> getLand() {
+//		return landrepo.findAll();
+//	}
 	
 	
 	@Override
@@ -34,18 +38,23 @@ public class FarmerServiceImp implements FarmerService {
 		return true;
 	}
 	
-	//
 	
 	@Override
-	public List<Land> getLand() {
-		return landrepo.findAll();
+	public Farmer fetchUserByEmail(String email) {
+		return farmerrepo.findByEmail(email);
+		
 	}
 
 	@Override
-	public boolean addLand(Land land) {
-		landrepo.save(land);
-		return true;
+	public Farmer fetchUserByEmailAndPassword(String email, String password) {
+		return farmerrepo.findByEmailAndPassword(email, password);
 	}
+	
+	
+	
+	
+
+	
 	
 
 }

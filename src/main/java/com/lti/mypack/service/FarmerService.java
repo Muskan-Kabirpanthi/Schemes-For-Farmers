@@ -9,8 +9,7 @@ public interface FarmerService {
 	public List<Farmer> getFarmer();
 	public boolean addFarmer(Farmer farmer);
 	
-	
-	public List<Land> getLand();
-	public boolean addLand(Land land);
+	public Farmer fetchUserByEmail(String email);
+	public Farmer fetchUserByEmailAndPassword(String email, String password);
 
 }

@@ -34,6 +34,8 @@ public class Farmer {
 	private String state;
 	private String pinCode;
 	
+	public Farmer() {}
+	
 	
 	public Farmer(int farmerId, String farmerName, String email, String mobNumber, String accountNo, String ifscCode,
 			String adhaarNo, String panNo, String certificateNo, String password, int landId, int area, String address,

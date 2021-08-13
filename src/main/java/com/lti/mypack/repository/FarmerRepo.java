@@ -8,4 +8,8 @@ import com.lti.mypack.farmerreg.Farmer;
 @Repository
 public interface FarmerRepo extends JpaRepository<Farmer, Integer>{
 
+	public Farmer findByEmail(String email);
+	public Farmer findByEmailAndPassword(String email,String password);
+	
+
 }

@@ -27,20 +27,40 @@ public class FarmerController {
 		return farmser.getFarmer();
 	}
 	
-	@GetMapping("/getlands")
-	public List<Land> getAllLand(){
-		return farmser.getLand();
-	}
 	
 	@PostMapping("/getfarmers")
-	public boolean addFarmer(@RequestBody Farmer farmer) {
+	public boolean addFarmer(@RequestBody Farmer farmer) throws Exception {
+		String tempEmail=farmer.getEmail();
+		if(tempEmail!=null &&  !"".equals(tempEmail))  {
+			Farmer farmerObj=farmser.fetchUserByEmail(tempEmail);
+			if(farmerObj!=null) {
+				throw new Exception("Farmer with "+tempEmail+" already exist");
+			}
+		}
+		
 		return farmser.addFarmer(farmer);
 	}
 	
-	@PostMapping("/getlands")
-	public boolean addLand(@RequestBody Land land) {
-		return farmser.addLand(land);
+	@PostMapping("/login")
+	public Farmer farmerLogin(@RequestBody Farmer farmer) throws Exception {
+		String tempEmail=farmer.getEmail();
+		String temppass=farmer.getPassword();
+		Farmer farmerObj=null;
+		
+		if(tempEmail!=null && temppass !=null) {
+			farmerObj=farmser.fetchUserByEmailAndPassword(tempEmail, temppass);
 	
+		}
+		if(farmerObj==null) {
+			throw new Exception("Invalid EmailId or Password");
+		}
+		return farmerObj;
 	}
+	
 
+	
+	
+	
 }
+
+
