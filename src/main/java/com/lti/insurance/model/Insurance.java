@@ -93,6 +93,13 @@ public class Insurance {
 	public void setPerimumPercentage(double perimumPercentage) {
 		this.perimumPercentage = perimumPercentage;
 	}
+
+	@Override
+	public String toString() {
+		return "Insurance [insuranceId=" + insuranceId + ", insuranceName=" + insuranceName + ", companyName="
+				+ companyName + ", cropType=" + cropType + ", sumInsured=" + sumInsured + ", year=" + year
+				+ ", perimumPercentage=" + perimumPercentage + "]";
+	}
 	
 	    
 }
