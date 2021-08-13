@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.lti.product.model.AddProduct;
+
 import com.lti.product.model.Bidder;
 
 import com.lti.product.repository.BidderRepository;
@@ -31,6 +32,7 @@ public class ProductServiceImp1 implements ProductService {
 	}
 	@Override
 	public boolean addingProduct(AddProduct addproduct) {
+		
 		prodRepo.save(addproduct);
 		return true;
 	}
@@ -50,9 +52,15 @@ public class ProductServiceImp1 implements ProductService {
 //		AddProduct existingProduct = prodRepo.getById(product_id);
 //		existingProduct.setBidder_amount(product.getBidder_amount());
 //		existingProduct.setBidder_id(product.getBidder_id());
-		prodRepo.save(product);
-		System.out.println("Working");
+		AddProduct prd = prodRepo.getById(product.getProduct_id());
+		if(prd.getBidder_amount()<product.getBidder_amount()) 
+		{
+			prodRepo.save(product);
+			System.out.println("Bid Updated");
+		}
+		
 	}
+	
 
 	
 	

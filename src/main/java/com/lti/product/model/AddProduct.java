@@ -1,9 +1,14 @@
 package com.lti.product.model;
+import java.util.List;
+
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -15,24 +20,26 @@ public class AddProduct {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
 	private int product_id;
+	private int farmer_id;
 	private String crop_name;
 	private String crop_type;
 	private int quantity;
-	private int Base_price;
+	private int base_price;
 	private int bidder_amount;
 	private int bidder_id;
 	public AddProduct() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AddProduct(int product_id, String crop_name, String crop_type, int quantity, int base_price,
+	public AddProduct(int product_id, int farmer_id, String crop_name, String crop_type, int quantity, int base_price,
 			int bidder_amount, int bidder_id) {
 		super();
 		this.product_id = product_id;
+		this.farmer_id = farmer_id;
 		this.crop_name = crop_name;
 		this.crop_type = crop_type;
 		this.quantity = quantity;
-		Base_price = base_price;
+		this.base_price = base_price;
 		this.bidder_amount = bidder_amount;
 		this.bidder_id = bidder_id;
 	}
@@ -41,6 +48,12 @@ public class AddProduct {
 	}
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
+	}
+	public int getFarmer_id() {
+		return farmer_id;
+	}
+	public void setFarmer_id(int farmer_id) {
+		this.farmer_id = farmer_id;
 	}
 	public String getCrop_name() {
 		return crop_name;
@@ -61,10 +74,10 @@ public class AddProduct {
 		this.quantity = quantity;
 	}
 	public int getBase_price() {
-		return Base_price;
+		return base_price;
 	}
 	public void setBase_price(int base_price) {
-		Base_price = base_price;
+		this.base_price = base_price;
 	}
 	public int getBidder_amount() {
 		return bidder_amount;
@@ -78,14 +91,5 @@ public class AddProduct {
 	public void setBidder_id(int bidder_id) {
 		this.bidder_id = bidder_id;
 	}
-	@Override
-	public String toString() {
-		return "AddProduct [product_id=" + product_id + ", crop_name=" + crop_name + ", crop_type=" + crop_type
-				+ ", quantity=" + quantity + ", Base_price=" + Base_price + ", bidder_amount=" + bidder_amount
-				+ ", bidder_id=" + bidder_id + "]";
-	}
 	
-	
-	
-
 }

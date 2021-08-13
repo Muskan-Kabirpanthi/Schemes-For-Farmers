@@ -1,6 +1,7 @@
 package com.lti.product.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.product.model.AddProduct;
+
 import com.lti.product.model.Bidder;
 
 import com.lti.product.service.ProductService;
@@ -24,7 +26,8 @@ import com.lti.product.service.ProductService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/productRest/api")
 public class ProductController 
-{
+{		
+		
 		@Autowired
 		ProductService prodService;
 		
@@ -39,6 +42,8 @@ public class ProductController
 		@PostMapping("/products")
 		public boolean addingProduct(@RequestBody AddProduct addproduct)
 		{
+			
+			
 			return prodService.addingProduct(addproduct);
 		
 		}
@@ -61,6 +66,7 @@ public class ProductController
 		{
 			return prodService.addingBidders(bidder);
 		}
+		
 		
 		
 }
