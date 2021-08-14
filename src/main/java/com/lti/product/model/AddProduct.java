@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name="ProductsDataa")
 public class AddProduct {
@@ -25,6 +27,7 @@ public class AddProduct {
 	private String crop_type;
 	private int quantity;
 	private int base_price;
+	@JsonBackReference
 	@ManyToOne
 	private Bidding bidding;
 	public AddProduct() {

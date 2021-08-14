@@ -43,7 +43,7 @@ public class ProductServiceImp1 implements ProductService {
 	List<AddProduct> prodList = new ArrayList<AddProduct>();
 	prodList.add(product);
 	bidding.setProducts(prodList);
-//	prodRepo.save(product);
+	prodRepo.save(product);
 	biddingRepo.save(bidding);
 		return true;
 	}

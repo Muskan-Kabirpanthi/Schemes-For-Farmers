@@ -34,13 +34,6 @@ public class ProductController
 			
 		}
 		
-		@GetMapping("/bidding")
-		public List<Bidding> getAllBidding()
-		{
-			return prodService.getBidding();
-			
-		}
-		
 		@PostMapping("/products")
 		public boolean addingProduct(@RequestBody AddProduct addproduct)
 		{
@@ -48,6 +41,13 @@ public class ProductController
 			
 			return prodService.addingProduct(addproduct);
 		
+		}
+		
+		@GetMapping("/bidding")
+		public List<Bidding> getAllBidding()
+		{
+			return prodService.getBidding();
+			
 		}
 		
 		@PostMapping("/bidding")

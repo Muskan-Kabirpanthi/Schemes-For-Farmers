@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name="BiddTable")
 public class Bidding {
@@ -21,6 +23,7 @@ public class Bidding {
 	private int quantity;
 	private int base_price;
 	private int bidder_amount;
+	@JsonManagedReference
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="bidding")
 	private List<AddProduct> products;
 	public Bidding() {
