@@ -1,21 +1,19 @@
 package com.lti.product.service;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.lti.product.model.AddProduct;
 
 import com.lti.product.model.Bidder;
-
+import com.lti.product.model.Bidding;
 import com.lti.product.repository.BidderRepository;
-
+import com.lti.product.repository.BiddingRepository;
 import com.lti.product.repository.ProductRepository;
 
 @Service
 @Transactional
-
 public class ProductServiceImp1 implements ProductService {
 	
 	
@@ -23,7 +21,8 @@ public class ProductServiceImp1 implements ProductService {
 	ProductRepository prodRepo;
 	@Autowired
 	BidderRepository bidderRepo;
-	
+	@Autowired 
+	BiddingRepository biddingRepo;
 	
 	
 	@Override
@@ -38,6 +37,18 @@ public class ProductServiceImp1 implements ProductService {
 	}
 	
 	@Override
+	public boolean addingBidder(Bidding bidding) {
+	AddProduct product= prodRepo.findById(bidding.getProduct_id()).get();
+	product.setBidding(bidding);
+	List<AddProduct> prodList = new ArrayList<AddProduct>();
+	prodList.add(product);
+	bidding.setProducts(prodList);
+//	prodRepo.save(product);
+	biddingRepo.save(bidding);
+		return true;
+	}
+	
+	@Override
 	public List<Bidder> getBidders() {
 		return bidderRepo.findAll();
 		
@@ -48,23 +59,29 @@ public class ProductServiceImp1 implements ProductService {
 		return true;
 	}
 	@Override
-	public void updateProduct(AddProduct product) {
-//		AddProduct existingProduct = prodRepo.getById(product_id);
-//		existingProduct.setBidder_amount(product.getBidder_amount());
-//		existingProduct.setBidder_id(product.getBidder_id());
-		AddProduct prd = prodRepo.getById(product.getProduct_id());
-		if(prd.getBidder_amount()<product.getBidder_amount()) 
-		{
-			prodRepo.save(product);
-			System.out.println("Bid Updated");
-		}
+	public List<Bidding> getBidding() {
 		
+		return biddingRepo.findAll();
 	}
+	
+//	@Override
+//	public String updateProduct(AddProduct product) {
+//		AddProduct prd = prodRepo.getById(product.getProduct_id());
+//		if(prd.getBidder_amount()<product.getBidder_amount()) 
+//		{
+//			prodRepo.save(product);
+//			return "Updated";
+//		}
+//		else
+//			return "Not Updated";
+//	
+//	
+//	}
 	
 
+}
 	
 	
-	}
 	
 	 
 	

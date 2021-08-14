@@ -6,6 +6,7 @@ import java.util.List;
 import com.lti.product.model.AddProduct;
 
 import com.lti.product.model.Bidder;
+import com.lti.product.model.Bidding;
 
 
 public interface ProductService {
@@ -17,9 +18,11 @@ public interface ProductService {
 	
 	public boolean addingBidders(Bidder bidders);
 
-	
+	//public String updateProduct(AddProduct product);
 
-	public void updateProduct(AddProduct product);
+	boolean addingBidder(Bidding bidding);
+
+	public List<Bidding> getBidding();
 
 	
 	
