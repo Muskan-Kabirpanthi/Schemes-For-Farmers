@@ -4,10 +4,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
@@ -15,6 +19,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Bidding {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+	private int auction_id;
 	private int bidder_id;
 	private int product_id;
 	private int farmer_id;
@@ -30,9 +37,10 @@ public class Bidding {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bidding(int bidder_id, int product_id, int farmer_id, String crop_name, String crop_type, int quantity,
+	public Bidding(int auction_id,int bidder_id, int product_id, int farmer_id, String crop_name, String crop_type, int quantity,
 			int base_price, int bidder_amount, List<AddProduct> products) {
 		super();
+		this.auction_id=auction_id;
 		this.bidder_id = bidder_id;
 		this.product_id = product_id;
 		this.farmer_id = farmer_id;
@@ -42,6 +50,12 @@ public class Bidding {
 		this.base_price = base_price;
 		this.bidder_amount = bidder_amount;
 		this.products = products;
+	}
+	public int getAuction_id() {
+		return auction_id;
+	}
+	public void setAuction_id(int auction_id) {
+		this.auction_id = auction_id;
 	}
 	public int getBidder_id() {
 		return bidder_id;
