@@ -6,15 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.lti.product.model.AddProduct;
 import com.lti.product.model.Bidder;
 import com.lti.product.model.Bidding;
+import com.lti.product.model.MarketPlace;
 import com.lti.product.service.ProductService;
 
 @RestController
@@ -47,6 +48,21 @@ public class ProductController
 		public List<Bidding> getAllBidding()
 		{
 			return prodService.getBidding();
+			
+		}
+		@GetMapping("/market")
+		public List<MarketPlace> getAllMarket()
+		{
+			return prodService.getMarket();
+			
+		}
+		
+		
+		@PostMapping("/market")
+		public boolean addAllMarket(@RequestBody MarketPlace market)
+		{
+			prodService.addMarket(market);
+			return true;
 			
 		}
 		

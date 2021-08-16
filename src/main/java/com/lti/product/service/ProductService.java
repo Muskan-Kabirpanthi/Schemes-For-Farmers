@@ -7,6 +7,7 @@ import com.lti.product.model.AddProduct;
 
 import com.lti.product.model.Bidder;
 import com.lti.product.model.Bidding;
+import com.lti.product.model.MarketPlace;
 
 
 public interface ProductService {
@@ -24,6 +25,11 @@ public interface ProductService {
 
 	public List<Bidding> getBidding();
 
+	public boolean addMarket(MarketPlace market);
+
+	public List<MarketPlace> getMarket();
+	
+//	public List<Bidding> findByfarmer_id(int id);
 	
 	
 	

@@ -8,8 +8,10 @@ import com.lti.product.model.AddProduct;
 
 import com.lti.product.model.Bidder;
 import com.lti.product.model.Bidding;
+import com.lti.product.model.MarketPlace;
 import com.lti.product.repository.BidderRepository;
 import com.lti.product.repository.BiddingRepository;
+import com.lti.product.repository.MarketReposotiry;
 import com.lti.product.repository.ProductRepository;
 
 @Service
@@ -23,7 +25,8 @@ public class ProductServiceImp1 implements ProductService {
 	BidderRepository bidderRepo;
 	@Autowired 
 	BiddingRepository biddingRepo;
-	
+	@Autowired
+	MarketReposotiry marketRepo;
 	
 	@Override
 	public List<AddProduct> getProducts() {
@@ -63,7 +66,12 @@ public class ProductServiceImp1 implements ProductService {
 		
 		return biddingRepo.findAll();
 	}
-	
+//	@Override
+//	public List<Bidding> findByfarmer_id(int id) {
+//		
+//		return biddingRepo.findByfarmer_idList(id);
+//	}
+//	
 //	@Override
 //	public String updateProduct(AddProduct product) {
 //		AddProduct prd = prodRepo.getById(product.getProduct_id());
@@ -77,6 +85,17 @@ public class ProductServiceImp1 implements ProductService {
 //	
 //	
 //	}
+	@Override
+	public boolean addMarket(MarketPlace market) {
+		marketRepo.save(market);
+		return true;
+	}
+	@Override
+	public List<MarketPlace> getMarket() {
+		// TODO Auto-generated method stub
+		return marketRepo.findAll();
+	}
+	
 	
 
 }
